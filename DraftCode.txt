@@ -1,0 +1,133 @@
+﻿Random Generator:
+ Random rand = new Random();
+            int dice = rand.Next(1, 7);
+
+  Random rand = new Random(DateTime.Now.Second);
+=================================
+List instance:
+
+ List<int> newlist = new List<int>();
+
+==================================
+
+//Code to Take a player name from user input.
+
+            Character player = new Character();
+            Console.WriteLine("Enter your name: ");
+            string plyerinput = Console.ReadLine();
+            player.name = plyerinput;
+
+====================================
+
+//Code to Generate random oppenent names from a list.
+
+
+            Character oppnent = new Character();
+            List<string> oppenentlist = new List<string>() { "Super Man", "Mario", "Scorpion",
+            "Hunter","Lion","Tiger","Hulk","Ice Man"};
+
+            Random rand = new Random(DateTime.Now.Second);
+            int nameselect = rand.Next(0, 8);
+            oppnent.name = oppenentlist[nameselect];
+
+======================================
+
+ if(player.strength > oppnent.strength)
+            {
+                player.strength - oppnent.health;
+                Console.WriteLine($"{player.name} {player.strength}"); 
+                Console.WriteLine($"{oppnent.name} {oppnent.health}");
+            }
+
+======================================
+
+if (player.strength > oppnent.strength)
+            {
+                int result1 = oppnent.health - player.strength;
+                Console.WriteLine($"{player.name} {player.strength} {player.health}");
+                Console.WriteLine($"{oppnent.name} {oppnent.strength} {oppnent.health}");
+                Console.WriteLine(result1);
+            }
+            else if (player.strength < oppnent.strength)
+            {
+                int result = player.health - oppnent.strength  ;
+                Console.WriteLine($"{player.name} {player.strength} {player.health} ");
+                Console.WriteLine($"{oppnent.name} {oppnent.strength} {oppnent.health}");
+                Console.WriteLine(result);
+
+            }
+
+======================================
+
+ if (player.strength > oppnent.strength)
+            {
+                int result1 = oppnent.health - player.strength;
+                Console.WriteLine($"{player.name} {player.strength}");
+                Console.WriteLine($"{oppnent.name} {oppnent.strength}");
+                Console.WriteLine($"{player.name} You win ..\n" +
+                    $"Would you like to retier ? if Yes press() if No, continue by pressing enter : ");
+
+            }
+            else if (player.strength < oppnent.strength)
+            {
+                int result = player.health - oppnent.strength;
+                Console.WriteLine($"{player.name} {player.strength} {player.health} ");
+                Console.WriteLine($"{oppnent.name} {oppnent.strength} {oppnent.health}");
+                Console.WriteLine($"{player.name} You lose and  Your health is: {result}");
+
+            }
+            else if (player.strength == oppnent.strength)
+            {
+                Console.WriteLine("Tied result!");
+            }
+
+
+            
+=======================================
+
+ public void Battellogs() 
+        {
+            Battle log = new Battle();
+            Character player = new Character();
+            Character oppnent = new Character();
+            Round round = new Round();
+
+            //Code to Take a player name from user input.
+            Console.WriteLine("Enter your name: ");
+            string playerinput = Console.ReadLine();
+            player.name = playerinput;
+            string playername = player.name;
+            Random rand = new Random(DateTime.Now.Millisecond);
+            player.strength = rand.Next(1, 7);
+            int playerstrength = player.strength;
+            int playerhealth = player.health;
+
+
+
+            //Code to Generate random oppenent names from a list.
+            
+            List<string> oppenentlist = new List<string>() { "Super Man", "Mario", "Scorpion",
+            "Hunter","Lion","Tiger","Hulk","Ice Man"};
+
+            Random rand1 = new Random(DateTime.Now.Second);
+            int nameselect = rand1.Next(0, 8);
+            oppnent.name = oppenentlist[nameselect];
+            string oppnentname = oppnent.name;
+
+            Random rand2 = new Random(DateTime.Now.Millisecond);
+            oppnent.strength = rand2.Next(1, 7);
+            int oppnentstrength = oppnent.strength;
+
+            int oppnenthealth = oppnent.health;
+
+            Console.WriteLine($"{playername} {playerstrength} {playerhealth}");
+            Console.WriteLine($"{oppnentname} {oppnentstrength} {oppnenthealth} ");
+
+
+        }
+
+========================================================
+
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine("GAME OVER!");
+Console.ResetColor(); 

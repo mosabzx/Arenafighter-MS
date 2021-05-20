@@ -1,0 +1,456 @@
+﻿ public static void Oppname()
+        {
+            //Method to Generate an oppenent names from a list.
+            Character oppenent = new Character();
+            List<string> oppenentlist = new List<string>() { "Hero", "Mario", "Scorpion",
+                "Mountain","Lion","Tiger","Hulk","Ice Man"};
+
+            Random rand = new Random(DateTime.Now.Second);
+            int nameselect = rand.Next(0, 8);
+             oppenent.Name = oppenentlist[nameselect];
+
+            Console.WriteLine(oppenent.Name);
+
+
+        }
+==========================================================
+
+ public void Playername()
+        {
+            //Method to Take a player name from user input.
+
+            Character player = new Character();
+            Console.WriteLine("Enter your name: ");
+            string plyerinput = Console.ReadLine();
+            player.name = plyerinput;
+        }
+
+===========================================================
+
+ int loop = 0;
+
+            while (loop <= 2)
+            {
+                 player.PlayerInfo();
+
+                oppnent.OppnentInfo();
+
+                diceround.Dicerolling();
+                loop += 1;
+            }
+
+==============================================================
+
+int loop = 0;
+            while (loop <= 2)
+            {
+                
+
+                player.PlayerInfo();
+                oppnent.OppnentInfo();
+                loop += 1
+
+            }
+=============================================================
+Property for strength:
+public int PlayerStrength
+        {
+           get { return strength; }
+            set {
+                Random randstrength = new Random(DateTime.Now.Second);
+              value =  randstrength.Next(1, 10);
+                strength = value;
+            } 
+        }
+        
+
+
+=======================================================
+
+Static Method For starting Battle in Battle Class:
+  public static void FightBattle()
+        {
+            Character player = new Character();
+
+            //Code to Take a player name from user input.
+            Console.Write("Enter your name: ");
+            string playerinput = Console.ReadLine();
+            player.name = playerinput;
+            
+            ///Fixed by assign the random value to strength field in Character constructor.
+            /*//Code to give random value for player strength.
+            Random rand = new Random(DateTime.Now.Millisecond);
+            player.strength = rand.Next(1, 10); */
+
+
+            //assign varibales for player attributes.
+            string playername = player.name;
+            int playerstrength = player.strength;
+            int playerhealth = player.health;
+
+            //printing player info.
+            Console.WriteLine($"Name: {playername}\n" +
+                $"Strength: {playerstrength}\n" +
+                $"Health: {playerhealth}");
+
+            
+            Console.WriteLine("\nYou will fiaght against:\n");
+            // To give time for compiler to generate new  strength value for oppnent.
+            Console.ReadKey(true);
+
+
+            //Code to Generate random oppoenent names from a list.
+            Character opponent = new Character();
+            List<string> oppoenentlist = new List<string>() { "Super Man", "Spider Man", "Scorpion",
+            "Hunter","Lion","Tiger","Hulk","Bat Man"};
+            Random rand1 = new Random(DateTime.Now.Second);
+            int nameselect = rand1.Next(0, 8);
+            opponent.name = oppoenentlist[nameselect];
+
+            ///Fixed by assign the random value to strength field in Character constructor.
+            /*//code to give random value for opponent strength characters.
+            Random rand2 = new Random(DateTime.Now.Second);
+            opponent.strength = rand2.Next(1, 10); */
+
+
+            //assign variables for opponent attributes.
+            string opponentname = opponent.name;
+            int opponentstrength = opponent.strength;
+            int opponenthealth = opponent.health;
+
+            //printing opponent info.
+            Console.WriteLine($"Oppnent Name: {opponentname}\n" +
+                $"Strength: {opponentstrength}\n" +
+                $"Health: {opponenthealth}");
+
+
+
+
+
+        }
+
+=========================================================================
+Battel Calss :
+Method for Battle
+
+
+ public static void FightBattle()
+        {
+            Character player = new Character();
+
+            //Code to Take a player name from user input.
+            Console.Write("Enter your name: ");
+            string playerinput = Console.ReadLine();
+            player.name = playerinput;
+            
+            ///Fixed by assign the random value to strength field in Character constructor.
+            /*//Code to give random value for player strength.
+            Random rand = new Random(DateTime.Now.Millisecond);
+            player.strength = rand.Next(1, 10); */
+
+
+            //assign varibales for player attributes.
+            string playername = player.name;
+            int playerstrength = player.strength;
+            int playerhealth = player.health;
+
+            //printing player info.
+            Console.WriteLine($"Name: {playername}\n" +
+                $"Strength: {playerstrength}\n" +
+                $"Health: {playerhealth}");
+
+            
+            Console.WriteLine("\nYou will fiaght against:\n");
+            // To give time for compiler to generate new  strength value for oppnent.
+            Console.ReadKey(true);
+
+
+            //Code to Generate random oppoenent names from a list.
+            Character opponent = new Character();
+            List<string> oppoenentlist = new List<string>() { "Super Man", "Spider Man", "Scorpion",
+            "Hunter","Lion","Tiger","Hulk","Bat Man"};
+            Random rand1 = new Random(DateTime.Now.Second);
+            int nameselect = rand1.Next(0, 8);
+            opponent.name = oppoenentlist[nameselect];
+
+
+            ///Fixed by assign the random value to strength field in Character constructor.
+            /*//code to give random value for opponent strength characters.
+            Random rand2 = new Random(DateTime.Now.Second);
+            opponent.strength = rand2.Next(1, 10); */
+
+
+            //assign variables for opponent attributes.
+            string opponentname = opponent.name;
+            int opponentstrength = opponent.strength;
+            int opponenthealth = opponent.health;
+
+            //printing opponent info.
+            Console.WriteLine($"Oppnent Name: {opponentname}\n" +
+                $"Strength: {opponentstrength}\n" +
+                $"Health: {opponenthealth}\n");
+
+            Console.WriteLine("Are you ready to fight Hit enter to proceed.....");
+            Console.ReadKey(true);
+
+
+
+            //code to generate a diceroll.
+            Round diceroll = new Round();
+            int dicerollnum = diceroll.dice;
+            Console.WriteLine("Diceroll is: {0}", dicerollnum);
+
+            playerstrength += dicerollnum;
+            opponentstrength += dicerollnum;
+
+            if (playerstrength > opponentstrength) 
+            {
+                opponenthealth -= playerstrength;
+                Console.WriteLine($"{playername} You Win!\n" +
+                    $"Your health is: {playerhealth}");
+
+
+
+            }
+            else if (opponentstrength > playerstrength)
+            {
+                playerhealth -= opponentstrength;
+                Console.WriteLine($"{playername} Sorry you lose\n" +
+                    $"Your health is: {playerhealth}");
+
+            }
+
+=============================================================================
+else if (opponenthealth >= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"{opponentname} Is Dead !");
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{playername} Your Wining Score is: {playerscore}\n" +
+                                $"Your Strength is: {playerstrength}\n" +
+                                $"Your Health is {playerhealth}");
+
+                            Console.ResetColor();
+                            Console.WriteLine("Go ahead fight with another oppnent");
+                            Console.ReadLine();
+
+                            
+
+                        }
+====================================================================
+
+Method For Arena Fighter in Battle Class : 
+Classes Used (Character , Battle, Round).
+
+public static void FightBattle()
+        {
+            Character player = new Character();
+
+
+            //Code to Take a player name from user input.
+            Console.Write("Enter your name: ");
+            string playerinput = Console.ReadLine();
+            player.name = playerinput;
+            
+
+            ///Fixed by assign the random value to strength field in Character constructor.
+            /*//Code to give random value for player strength.
+            Random rand = new Random(DateTime.Now.Millisecond);
+            player.strength = rand.Next(1, 10); */
+
+
+            //assign varibales for player attributes.
+            string playername = player.name;
+            int playerstrength = player.strength;
+            int playerhealth = player.health;
+
+            //printing player info.
+            Console.WriteLine($"Name: {playername}\n" +
+                $"Strength: {playerstrength}\n" +
+                $"Health: {playerhealth}");
+
+
+            //create an object for plyer score.
+            Battle playerscore = new Battle();
+            //assign variable to playerscore.
+            int playscore = playerscore.score;
+
+
+            bool round = true;
+            while (round)
+            {
+                Console.WriteLine("\nYou will fiaght against:\n");
+                // To give time for compiler to generate new  strength value for oppnent.
+                Console.ReadKey(true);
+
+
+                //Code to Generate random oppoenent names from a list.
+                Character opponent = new Character();
+                List<string> oppoenentlist = new List<string>() { "Super Man", "Spider Man", "Scorpion",
+                "Hunter","Lion","Tiger","Hulk","Bat Man"};
+
+                Random rand1 = new Random(DateTime.Now.Second);
+                int nameselect = rand1.Next(0, 8);
+                opponent.name = oppoenentlist[nameselect];
+
+
+                ///Fixed by assign the random value to strength field in Character constructor.
+                /*//code to give random value for opponent strength characters.
+                Random rand2 = new Random(DateTime.Now.Second);
+                opponent.strength = rand2.Next(1, 10); */
+
+
+                //assign variables for opponent attributes.
+                string opponentname = opponent.name;
+                int opponentstrength = opponent.strength;
+                int opponenthealth = opponent.health;
+
+
+                //printing opponent info.
+                Console.WriteLine($"Oppnent Name: {opponentname}\n" +
+                    $"Strength: {opponentstrength}\n" +
+                    $"Health: {opponenthealth}\n");
+
+
+
+                Console.WriteLine("Are you ready to fight Hit enter to proceed.....");
+                Console.ReadKey(true);
+
+                //diceroll loop with each opponent.
+                bool fight = true;
+                while (fight) 
+                {
+                    
+                    
+                    //code to generate a diceroll.
+                    Round diceroll = new Round();
+                    int dicerollnum = diceroll.dice;
+                    Console.WriteLine("\nDiceroll is: {0}", dicerollnum);
+
+                    playerstrength += dicerollnum;
+                    opponentstrength += dicerollnum;
+
+
+
+
+                    if (playerstrength > opponentstrength)
+                    {
+                        opponenthealth -= playerstrength;
+                        Console.WriteLine($"{playername} You Win! This Round");
+                        playscore += 1;
+                        Console.WriteLine($"{playername} Your Score: {playscore}");
+                        Console.WriteLine("Your Health is: {0}", playerhealth);
+
+                        Console.WriteLine($"{opponentname}{opponenthealth }");
+
+                        Console.WriteLine("Click (c) to Continue, (e) To End The Fight! ");
+                        string select = Console.ReadLine();
+                        if (select == "c")
+                        {
+
+                            Console.Clear();
+                            
+                        }
+                        else if (select == "e")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("GAME OVER! You End The Match!");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"{playername} Your Wining Score is: {playscore}\n" +
+                                $"Your Strength is: {playerstrength}\n" +
+                                $"Your Health is {playerhealth}");
+                            Console.ResetColor();
+
+
+                            fight = false;
+                            round = false;
+                            //break; // break the round loop.
+
+                        }
+
+                    }
+
+
+                    else if (opponentstrength > playerstrength)
+                    {
+                        playerhealth -= opponentstrength;
+                        Console.WriteLine($"{playername} Sorry you lose This Round\n" +
+                            $"Try again..");
+                        
+                        Console.ReadKey();
+                        Console.Clear();
+
+
+                    }
+
+                    if (playerhealth <= 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($"{playername} Your health is 0 you dead");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("GAME OVER!");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"{playername} Your Wining Score is: {playscore}\n" +
+                            $"Your Strength is: {playerstrength}\n" +
+                            $"Your Health is {playerhealth}");
+
+
+                        fight = false;
+                        round = false;
+                        //break;
+
+                    }
+
+                    else if (opponenthealth <= 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"{opponentname} Is Dead !");
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"{playername} Your Wining Score is: {playscore}\n" +
+                            $"Your Strength is: {playerstrength}\n" +
+                            $"Your Health is {playerhealth}");
+
+                        Console.ResetColor();
+                        Console.WriteLine("Go ahead fight with another oppnent");
+                        Console.ReadLine();
+
+                        fight = false;
+
+
+                    }
+
+                        
+                     
+                    if (fight == false && opponenthealth <= 0)
+                    {
+                        break;
+                    }
+
+
+
+
+                }
+
+                
+                if (round == false && playerhealth <= 0)
+                {
+                    break;
+                }
+
+
+                
+            }
+
+
+            
+
+
+
+
+
+
+        }
+
+
